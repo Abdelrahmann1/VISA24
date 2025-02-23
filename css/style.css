@@ -2327,6 +2327,8 @@ width: 100%;
 	}
 	.hero-text {
 		margin-bottom: 40px;
+	}.logo img{
+		width: 50%;
 	}
 }
 /* Tablet Device: 768px */
@@ -2348,6 +2350,7 @@ width: 100%;
 /* Large Mobile: 480px */
 
 @media only screen and (max-width: 767px) {
+	
 	.testimonial-slider.owl-carousel .owl-nav {
 		display: none;
 	}
