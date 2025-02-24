@@ -998,8 +998,7 @@ width: 100%;
 	font-size: 16px;
 	color: #aaaab3;
 	line-height: 32px;
-	list-style: none;
-}
+    list-style-type: disc; /* Adds bullets */}
 .footer-section .footer-text .ft-newslatter h6 {
 	font-size: 15px;
 	color: #ffffff;
