@@ -806,7 +806,7 @@ ul, ol {
 	position: absolute;
 	/* left: 45px;
 	right: 25px; */
-	bottom: -250px;
+	/* bottom: -250px; */
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	z-index: 1;
@@ -815,6 +815,12 @@ padding: 40px 45px 15px 25px ;
 	margin-top: 10px;
 	background-color: #001A6E;
 opacity: 0.85;  /* Corrected */
+}
+.hp-room-items .hp-room-item  .hr-text-1{
+	bottom: -215px ;
+}
+.hp-room-items .hp-room-item  .hr-text-2{
+	bottom: -403px ;
 }
 /* .hp-room-items .hp-room-item .hr-text::before {
 
@@ -2443,3 +2449,4 @@ width: 100%;
     color: gray;
     opacity: 0.6;
 }
+
