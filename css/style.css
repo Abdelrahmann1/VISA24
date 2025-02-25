@@ -2041,7 +2041,7 @@ width: 100%;
 }
 /*-------------------------------- Respinsive Media Styles --------------------------------*/
 
-@media only screen and (min-width: 1554px) and (max-width: 1920px) {
+/* @media only screen and (min-width: 1554px) and (max-width: 1920px) {
 	.hp-room-items .hp-room-item .hr-text {
 		bottom: -200px;
 	}
@@ -2055,7 +2055,7 @@ width: 100%;
 	.container {
 		max-width: 1170px;
 	}
-}
+} */
 /* Medium Device: 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2072,7 +2072,19 @@ width: 100%;
 		bottom: 80px;
 	}
 }
+@media only screen and (max-width: 409px) {
+	.Discover-btn,.bk-btn {
+		width: 100% !important;
+		text-align: center !important;
+		padding: 18px 0px !important;
+	}
+}
 @media only screen and (max-width: 991px) {
+	.bk-btn {
+		width: 100% !important;
+		text-align: center !important;
+		padding: 18px 0px !important;
+	}
 	.hero-text h1 {
 		font-size: 50px;
 		line-height: 50px;
@@ -2291,6 +2303,19 @@ width: 100%;
 		color: #19191a;
 		margin-right: 20px;
 	}
+	.reaid {
+		justify-content: center !important;
+	}
+	.texts-sec .col-lg-4{
+		display: flex;
+		justify-content: center !important;
+
+	}
+	.texts-sec img{
+		width: 90% !important;
+		margin: 10% 0;
+
+	}
 	.offcanvas-menu-wrapper .top-social a:last-child {
 		margin-right: 0;
 	}
@@ -2333,7 +2358,7 @@ width: 100%;
 	.hero-text {
 		margin-bottom: 40px;
 	}.logo img{
-		width: 50%;
+		width: 50% !important;
 	}
 }
 /* Tablet Device: 768px */
@@ -2450,3 +2475,261 @@ width: 100%;
     opacity: 0.6;
 }
 
+
+.icon-btn{
+
+}
+.apply-text-main{
+	color: #4A4A4A !important;
+	font-family: Cabin;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+.apply-text-main a{
+	color: #4A4A4A !important;
+
+	text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+}
+.section-title-apply{
+	display: flex;
+flex-direction: column;
+align-items: center;
+}
+.section-title-apply span{
+	color: #001A6E;
+text-align: center;
+font-family: Lora;
+font-size: 32px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.section-title-apply h2{
+	color: #001A6E;
+font-family: Lora;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.section-title-apply h3{
+	color: #4A4A4A;
+font-family: Cabin;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.service-item-apply {
+	text-align: center;
+	padding: 30px 35px 18px;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	background: #001A6E;
+}
+.service-item-apply  {
+	display: inline-block;
+	color: #001A6E;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+	text-align: start;
+	height: 100%;
+}
+.service-item-apply h4 {
+	font-family: Lora;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 15px;
+	margin-top: 10px;
+	-webkit-transition: all 0.3s;
+	color: white;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.service-item-apply p,.service-item-apply p a {
+	-webkit-transition: all 0.3s;
+	color: #BFBFBF;
+	font-family: Cabin;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+
+
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.service-item-apply p a{
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: auto;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
+}
+.service-item-apply h2{
+	position: relative;
+	color: #FFF;
+	width: fit-content;
+font-family: Cabin;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.service-item-apply h2 > hr{
+	position: absolute;
+	top: 10px;
+    width: 100%;
+	border-bottom: 2px solid #FFF;
+}
+.read{
+    position: absolute;
+    top: 85%;
+    right: 10%;
+}
+.back-grey{
+	 background: #E9EAEC;;
+}
+.texts-sec{
+	padding: 3rem 0;
+}
+.texts-sec p{
+	color: #4A4A4A;
+font-family: Cabin;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+margin-top: 1rem;
+}
+.texts-sec a {
+    color: #001A6E;
+    text-align: center;
+    font-family: Lora;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: underline;
+    display: inline-block;
+    position: relative;
+    padding-left: 25px; /* Space for the bullet */
+}
+
+.texts-sec a::before {
+    content: "●"; /* Unicode for a solid circle */
+    color: #001A6E; /* Match the text color */
+    font-size: 20px; /* Adjust size as needed */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.reaid {
+	display: flex;
+	justify-content: end;
+}
+.left-reaid{
+	justify-content: start;
+}
+
+.title-invite{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.title-invite h2{
+	color: #000;
+font-family: Lora;
+font-size: 40px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+
+.start-app-tetx{
+	color: #000;
+font-family: Lora;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.div-start-a-t{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 1rem 0;
+}
+.apply-invite p{
+	color: #4A4A4A;
+font-family: Cabin;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.apply-invite a{
+	color: #4A4A4A;
+font-family: Cabin;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: auto;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+}
+.contact-form label{
+	color: #001A6E;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
+.drop-btn{
+	width: 100%;
+    height: 50px;
+    border: 1px solid #e1e1e1 !important;
+    font-size: 16px;
+    padding-left: 25px;
+    margin-bottom: 28px;
+	display: flex !important;
+	color: #535353 !important;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 300;
+line-height: normal;
+    align-items: center;
+    justify-content: space-between;
+	background-color: white !important;
+}
+
+.appy-invite-btn{
+	color: #FFF;
+text-align: center;
+font-family: Lora;
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+width: 100%;
+}
