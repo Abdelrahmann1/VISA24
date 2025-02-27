@@ -170,19 +170,19 @@ ul, ol {
 	0% {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
-		border: 4px solid blue;  /* Blue */
+		border: 4px solid blue; 
 		border-left-color: transparent;
 	}
 	50% {
 		-webkit-transform: rotate(180deg);
 		transform: rotate(180deg);
-		border: 4px solid red;   /* Red */
+		border: 4px solid red;  
 		border-left-color: transparent;
 	}
 	100% {
 		-webkit-transform: rotate(360deg);
 		transform: rotate(360deg);
-		border: 4px solid blue;  /* Blue */
+		border: 4px solid blue; 
 		border-left-color: transparent;
 	}
 }
@@ -190,70 +190,22 @@ ul, ol {
 @-webkit-keyframes loader {
 	0% {
 		-webkit-transform: rotate(0deg);
-		border: 4px solid blue;  /* Blue */
+		border: 4px solid blue; 
 		border-left-color: transparent;
 	}
 	50% {
 		-webkit-transform: rotate(180deg);
-		border: 4px solid red;   /* Red */
+		border: 4px solid red;  
 		border-left-color: transparent;
 	}
 	100% {
 		-webkit-transform: rotate(360deg);
-		border: 4px solid blue;  /* Blue */
+		border: 4px solid blue; 
 		border-left-color: transparent;
 	}
 }
 
-/* .loader {
-	width: 40px;
-	height: 40px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -13px;
-	margin-left: -13px;
-	border-radius: 60px;
-	animation: loader 0.8s linear infinite;
-	-webkit-animation: loader 0.8s linear infinite;
-}
-@keyframes loader {
-	0% {
-		-webkit-transform: rotate(0deg);
-		transform: rotate(0deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-	50% {
-		-webkit-transform: rotate(180deg);
-		transform: rotate(180deg);
-		border: 4px solid #673ab7;
-		border-left-color: transparent;
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		transform: rotate(360deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-}
-@-webkit-keyframes loader {
-	0% {
-		-webkit-transform: rotate(0deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-	50% {
-		-webkit-transform: rotate(180deg);
-		border: 4px solid #673ab7;
-		border-left-color: transparent;
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-		border: 4px solid #f44336;
-		border-left-color: transparent;
-	}
-} */
+
 .spacial-controls {
 	position: fixed;
 	width: 111px;
@@ -313,9 +265,6 @@ ul, ol {
 	-ms-flex-pack: center;
 	justify-content: center;
 }
-/*---------------------
-  Header
------------------------*/
 
 .header-section.header-normal .menu-item {
 	-webkit-box-shadow: 0px 12px 15px rgba(36, 11, 12, 0.05);
@@ -543,9 +492,6 @@ ul, ol {
 .offcanvas-menu-wrapper {
 	display: none;
 }
-/*---------------------
-  Hero
------------------------*/
 
 .hero-section {
 	position: relative;
@@ -703,9 +649,6 @@ ul, ol {
     height: 100%;
     background: linear-gradient(90deg, rgba(10, 22, 43, 0.28) 3.4%, rgba(10, 22, 43, 0.70) 73.66%);
 }
-/*---------------------
-  About US
------------------------*/
 
 .about-text {
 	text-align: center;
@@ -727,9 +670,6 @@ ul, ol {
 .about-pic img {
 	min-width: 100%;
 }
-/*---------------------
-  Service Section
------------------------*/
 
 .services-section {
 	padding-bottom: 60px;
@@ -779,9 +719,6 @@ ul, ol {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
-/*------------------------
-  Home Page Room Section 
--------------------------*/
 
 .hp-room-items {
 	margin-left: -15px;
@@ -804,9 +741,6 @@ ul, ol {
 .hp-room-items .hp-room-item .hr-text {
 	border-radius: 20px;
 	position: absolute;
-	/* left: 45px;
-	right: 25px; */
-	/* bottom: -250px; */
 	-webkit-transition: all 0.5s;
 	-o-transition: all 0.5s;
 	z-index: 1;
@@ -814,7 +748,7 @@ padding: 40px 45px 15px 25px ;
 	transition: all 0.5s;
 	margin-top: 10px;
 	background-color: #001A6E;
-opacity: 0.85;  /* Corrected */
+opacity: 0.85; 
 }
 .hp-room-items .hp-room-item  .hr-text-1{
 	bottom: -215px ;
@@ -822,16 +756,6 @@ opacity: 0.85;  /* Corrected */
 .hp-room-items .hp-room-item  .hr-text-2{
 	bottom: -403px ;
 }
-/* .hp-room-items .hp-room-item .hr-text::before {
-
-position: absolute;
-top: 0;
-content: '';
-width: 100%;
-    height: 100%;
-	z-index: 0;
-} */
-
 .hp-room-items .hp-room-item .hr-text h3 {
 	color: #ffffff;
 	z-index: 1;
@@ -859,7 +783,6 @@ width: 100%;
 .hp-room-items .hp-room-item .hr-text table tbody tr td {
 	font-size: 16px;
 	color: #ffffff;
-	/* line-height: 36px; */
 }
 .hp-room-items .hp-room-item .hr-text table tbody tr td.r-o {
 	width: 120px;
@@ -870,9 +793,6 @@ width: 100%;
 .hp-room-items .hp-room-item .hr-text .primary-btn {
 
 }
-/*---------------------
-  Testimonial Slider
------------------------*/
 
 .testimonial-section {
 	background: #f9f9f9;
@@ -936,9 +856,6 @@ width: 100%;
 	color: #19191a;
 	display: inline-block;
 }
-/*---------------------
-  Blog and Event
------------------------*/
 
 .blog-section {
 	padding-bottom: 70px;
@@ -946,9 +863,6 @@ width: 100%;
 .blog-section .section-title {
 	margin-bottom: 36px;
 }
-/*---------------------
-  Footer Section
------------------------*/
 
 .footer-section {
 	background: #222736;
@@ -1004,7 +918,7 @@ width: 100%;
 	font-size: 16px;
 	color: #aaaab3;
 	line-height: 32px;
-    list-style-type: disc; /* Adds bullets */}
+    list-style-type: disc; }
 .footer-section .footer-text .ft-newslatter h6 {
 	font-size: 15px;
 	color: #ffffff;
@@ -1064,11 +978,6 @@ width: 100%;
 	color: #707079;
 	text-align: right;
 }
-/* --------------------------------- Other Pages Styles ----------------------------------- */
-
-/*---------------------
-  Breadcrumb Section
------------------------*/
 
 .breadcrumb-section {
 	padding-top: 70px;
@@ -1104,8 +1013,6 @@ width: 100%;
 	font-size: 18px;
 	color: #aaaab3;
 }
-/*------------------------
-  About Us Page Section
 -------------------------*/
 
 .aboutus-page-section {
@@ -1154,9 +1061,6 @@ width: 100%;
 .about-page-services .ap-service-item .api-text h3 {
 	color: #ffffff;
 }
-/*---------------------
-  Video Section
------------------------*/
 
 .video-section {
 	height: 500px;
@@ -1178,9 +1082,6 @@ width: 100%;
 .video-section .video-text .play-btn {
 	display: inline-block;
 }
-/*---------------------
-  Gallery Section
------------------------*/
 
 .gallery-section {
 	padding-bottom: 80px;
@@ -1240,10 +1141,6 @@ width: 100%;
 .gallery-item .gi-text h3 {
 	color: #ffffff;
 }
-/*---------------------
-  Room Section
------------------------*/
-
 .rooms-section {
 	padding-top: 0;
 	padding-bottom: 80px;
@@ -1608,9 +1505,6 @@ width: 100%;
 	height: 46px;
 	margin-top: 30px;
 }
-/*---------------------
-  Blog Section
------------------------*/
 
 .blog-section.blog-page {
 	padding-top: 0;
@@ -1663,9 +1557,6 @@ width: 100%;
 .load-more .primary-btn {
 	color: #19191a;
 }
-/*----------------------------
-  Blog Details Hero Section
-----------------------------*/
 
 .blog-details-hero {
 	height: 530px;
@@ -1705,9 +1596,6 @@ width: 100%;
 .bd-hero-text ul li.b-time {
 	text-transform: uppercase;
 }
-/*---------------------
-  Blog Details Section
------------------------*/
 
 .blog-details-section {
 	padding-top: 55px;
@@ -1929,9 +1817,6 @@ width: 100%;
 	display: inline-block;
 	border-radius: 2px;
 }
-/*---------------------
-  Recommend Blog
------------------------*/
 
 .recommend-blog-section {
 	padding-top: 65px;
@@ -1943,9 +1828,6 @@ width: 100%;
 .recommend-blog-section .section-title h2 {
 	margin-top: 0;
 }
-/*---------------------
-  Contact Section
------------------------*/
 
 .contact-section {
 	padding-top: 80px;
@@ -2039,24 +1921,7 @@ width: 100%;
 .map iframe {
 	width: 100%;
 }
-/*-------------------------------- Respinsive Media Styles --------------------------------*/
 
-/* @media only screen and (min-width: 1554px) and (max-width: 1920px) {
-	.hp-room-items .hp-room-item .hr-text {
-		bottom: -200px;
-	}
-}
-@media only screen and (min-width: 1200px) and (max-width: 1250px) {
-	.hp-room-items .hp-room-item .hr-text {
-		bottom: -288px;
-	}
-}
-@media only screen and (min-width: 1200px) {
-	.container {
-		max-width: 1170px;
-	}
-} */
-/* Medium Device: 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.testimonial-slider.owl-carousel .owl-nav button {
@@ -2065,12 +1930,7 @@ width: 100%;
 	.testimonial-slider.owl-carousel .owl-nav button.owl-next {
 		right: -150px;
 	}
-	.hp-room-items .hp-room-item .hr-text {
-		bottom: -322px;
-	}
-	.hp-room-items .hp-room-item:hover .hr-text {
-		bottom: 80px;
-	}
+
 }
 @media only screen and (max-width: 409px) {
 	.Discover-btn,.bk-btn {
@@ -2079,7 +1939,7 @@ width: 100%;
 		padding: 18px 0px !important;
 	}
 }
-@media only screen and (max-width: 991px) {
+@media  (max-width: 991px) {
 	.bk-btn {
 		width: 100% !important;
 		text-align: center !important;
@@ -2361,7 +2221,6 @@ width: 100%;
 		width: 50% !important;
 	}
 }
-/* Tablet Device: 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.testimonial-slider.owl-carousel .owl-nav button {
@@ -2377,7 +2236,6 @@ width: 100%;
 		margin-bottom: 15px;
 	}
 }
-/* Large Mobile: 480px */
 
 @media only screen and (max-width: 767px) {
 	
@@ -2625,13 +2483,13 @@ margin-top: 1rem;
     text-decoration: underline;
     display: inline-block;
     position: relative;
-    padding-left: 25px; /* Space for the bullet */
+    padding-left: 25px;
 }
 
 .texts-sec a::before {
-    content: "●"; /* Unicode for a solid circle */
-    color: #001A6E; /* Match the text color */
-    font-size: 20px; /* Adjust size as needed */
+    content: "●"; 
+    color: #001A6E; 
+    font-size: 20px; 
     position: absolute;
     left: 0;
     top: 50%;
