@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
-    <link rel="stylesheet" href="../css/next.css" type="text/css">
 </head>
 
 <body>
@@ -148,7 +147,7 @@
     <!-- Header End -->
 
     <!-- Contact Section Begin -->
-    <section class="contact-section spad" id="content">
+    <section class="contact-section spad">
         <div class="container">
             <div class="title-invite">
                 <h2>Get Invitation to Russia</h2>
@@ -178,7 +177,7 @@
                             <div class="col-lg-6">
                                 <label for="name">Language</label>
                                 <div class="dropdown">
-                                    <button class="btn drop-btn lan-input dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         language
                                     </button>
                                     <ul class="dropdown-menu">
@@ -190,7 +189,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="name">Currency</label>
-                                <!-- <div class="dropdown">
+                                <div class="dropdown">
                                     <button class="btn drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Currency
                                     </button>
@@ -199,18 +198,11 @@
                                       <li><a class="dropdown-item">EUR</a></li>
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
-                                  </div> -->
-                                  <select  placeholder="Currency">
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">+6</option>
-                                </select>
+                                  </div>
                             </div>
                             <div class="col-lg-12">
                                 <label for="name">Citizenship</label>
-                                <!-- <div class="dropdown">
+                                <div class="dropdown">
                                     <button class="btn drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Sellect your Citizenship
                                     </button>
@@ -219,19 +211,11 @@
                                       <li><a class="dropdown-item">EUR</a></li>
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
-                                  </div> -->
-                                  <select >
-                                    <option value="0">Sellect your visa type</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">+6</option>
-                                </select>
+                                  </div>
                             </div>
                             <div class="col-lg-12">
                                 <label for="name">Visa type</label>
-                                <!-- <div class="dropdown">
+                                <div class="dropdown">
                                     <button class="btn drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Sellect your visa type
                                     </button>
@@ -240,42 +224,23 @@
                                       <li><a class="dropdown-item">EUR</a></li>
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
-                                  </div> -->
-                                  <select >
-                                    <option value="0">Sellect your visa type</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">+6</option>
-                                </select>
+                                  </div>
                             </div>
                             <div class="col-lg-12">
-                                <!-- <label for="name">Number of visitors</label>
+                                <label for="name">Number of visitors</label>
                                 <div class="dropdown">
-                                    <button class="btn drop-btn dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn drop-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         1
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item">2</a></li>
-                                      <li><a class="dropdown-item">3</a></li>
-                                      <li><a class="dropdown-item">4</a></li>
-                                      <li><a class="dropdown-item">5</a></li>
-                                      <li><a class="dropdown-item">6+</a></li>
+                                      <li><a class="dropdown-item">USD</a></li>
+                                      <li><a class="dropdown-item">EUR</a></li>
+                                      <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
-                                  </div> -->
-                                  <label> Number of visitors </label>
-                                  <select id="numOfVisitors">
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                      <option value="6">+6</option>
-                                  </select>
+                                  </div>
                             </div>
                             <div class="col-lg-12">
-                                <button type="submit" class="appy-invite-btn" id="nextStepBtn"> > Next Step</button>
+                                <button type="submit" class="appy-invite-btn"> > Next Step</button>
                             </div>
                         </div>
                     </form>
@@ -285,6 +250,26 @@
         </div>
     </section>
     <!-- Contact Section End -->
+    <script>
+        document.addEventListener('click', function (event) {
+            if (event.target.closest('.dropdown-item')) {
+                let item = event.target.closest('.dropdown-item'); // Get the clicked item
+                let dropdown = item.closest('.dropdown'); // Find the closest dropdown
+                let button = dropdown.querySelector('.dropdown-toggle'); // Find the button
+                
+                let newText = item.textContent.trim(); // Get the text
+                let newImgSrc = item.getAttribute('data-img'); // Get the new image source
+    
+                // Update button content
+                if (newImgSrc) {
+                    button.innerHTML = `<img src="${newImgSrc}" alt="${newText}" width="20" height="20"> ${newText}`;
+                }else{
+                    
+                    button.innerHTML = ` ${newText}`;
+                }
+            }
+        });
+    </script>
     
     <!-- Footer Section Begin -->
    
@@ -388,7 +373,6 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/next.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
