@@ -102,17 +102,26 @@ padding: 2rem ;
     width: 25% !important;
 }
 .stay input{
-    width: 40% !important;
+    width: 20% !important;
 }
 .date{
     display: flex;
     justify-content: flex-start;
     gap: 5%;
 }
+.stay label{
+    /* font-size: 20px !important; */
+    height: fit-content;
+    margin: 0;
+}
+.count{
+    width: 100% !important;
+}
 .stay{
     display: flex;
     justify-content: flex-start;
-    gap: 10%;
+    gap: 3%;
+    align-items: center;
 }
 p{
     margin: 0;
@@ -401,4 +410,15 @@ input.date-placeholder:empty:before {
 }
 .nice-select,.nice-select .list{
     width: 100%;
+}
+.amount-boxs {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
 }

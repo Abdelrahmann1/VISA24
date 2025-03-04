@@ -159,9 +159,13 @@
                         <p>
                             To obtain Russian Visa you need:
                             1. Fill in our online form to obtain our Visa invitation to Russia<br>
-                            2. Fill in the <a href="https://visa.kdmid.ru/" target="_blank">online visa application form </a>on the official website of the Ministry of Foreign Affairs of Russia and indicate there your visa invitation’s and personal data<br>
-                            Please visit <a href="https://goingrus.com/info/en/get-russian-visa/russian-consulates" target="_blank">official webpage of Russian Embassy in your country</a>to find out more information about all requirements for obtaining Russian visa.</p>
-               
+                            2. Fill in the <a href="https://visa.kdmid.ru/" target="_blank">online visa application form
+                            </a>on the official website of the Ministry of Foreign Affairs of Russia and indicate there
+                            your visa invitation’s and personal data<br>
+                            Please visit <a href="https://goingrus.com/info/en/get-russian-visa/russian-consulates"
+                                target="_blank">official webpage of Russian Embassy in your country</a>to find out more
+                            information about all requirements for obtaining Russian visa.</p>
+
                         </p>
                         <img src="../img/apply/7.png" alt="">
                     </div>
@@ -178,15 +182,17 @@
                             <div class="col-lg-6">
                                 <label for="name">Language</label>
                                 <div class="dropdown">
-                                    <button class="btn drop-btn lan-input dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn drop-btn lan-input dropdown-toggle" type="button" id="Language"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
                                         language
                                     </button>
                                     <ul class="dropdown-menu">
-                                      <li ><a class="dropdown-item" data-img="../img/flag.jpg" ><img src="../img/flag.jpg" alt=""> English</a></li>
-                                      <li><a class="dropdown-item">Another action</a></li>
-                                      <li><a class="dropdown-item">Something else here</a></li>
+                                        <li><a class="dropdown-item" data-img="../img/flag.jpg"><img
+                                                    src="../img/flag.jpg" alt=""> English</a></li>
+                                        <li><a class="dropdown-item">Another action</a></li>
+                                        <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
-                                  </div>
+                                </div>
                             </div>
                             <div class="col-lg-6">
                                 <label for="name">Currency</label>
@@ -200,7 +206,7 @@
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
                                   </div> -->
-                                  <select  placeholder="Currency">
+                                <select id="currency">
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
@@ -220,7 +226,7 @@
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
                                   </div> -->
-                                  <select >
+                                <select id="Citizenship">
                                     <option value="0">Sellect your visa type</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -241,7 +247,7 @@
                                       <li><a class="dropdown-item">Something else here</a></li>
                                     </ul>
                                   </div> -->
-                                  <select >
+                                <select id="visatype">
                                     <option value="0">Sellect your visa type</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -264,18 +270,19 @@
                                       <li><a class="dropdown-item">6+</a></li>
                                     </ul>
                                   </div> -->
-                                  <label> Number of visitors </label>
-                                  <select id="numOfVisitors">
-                                      <option value="1">1</option>
-                                      <option value="2">2</option>
-                                      <option value="3">3</option>
-                                      <option value="4">4</option>
-                                      <option value="5">5</option>
-                                      <option value="6">+6</option>
-                                  </select>
+                                <label> Number of visitors </label>
+                                <select id="numOfVisitors">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">+6</option>
+                                </select>
                             </div>
                             <div class="col-lg-12">
-                                <button type="submit" class="appy-invite-btn" id="nextStepBtn"> > Next Step</button>
+                                <button type="submit" class="appy-invite-btn" id="nextStsepBtn"> > sdsdsd Step</button>
+                                <button class="appy-invite-btn" id="nextStsepBtn"> > Next Step</button>
                             </div>
                         </div>
                     </form>
@@ -285,9 +292,9 @@
         </div>
     </section>
     <!-- Contact Section End -->
-    
+
     <!-- Footer Section Begin -->
-   
+
     <footer class="footer-section">
         <div class="container">
             <div class="footer-text">
@@ -321,7 +328,8 @@
                                 <li>TIN : 5254498269</li>
                                 <li>Legal address : Nizhny Novgorod region, M.O. Diveevskiy, d Mayevka, ul
                                     Rodnikovaya,d. 14</li>
-                                    <li>WhatsApp : <a href="https://wa.me/+79680100024" target="_blank" class="what-app-btn">whatsapp</a> </li>
+                                <li>WhatsApp : <a href="https://wa.me/+79680100024" target="_blank"
+                                        class="what-app-btn">whatsapp</a> </li>
 
                             </ul>
                         </div>
@@ -356,7 +364,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="co-text">
-                            <p>Copyright &copy; 
+                            <p>Copyright &copy;
                                 <script>document.write(new Date().getFullYear());</script> All rights reserved.
                             </p>
                         </div>
@@ -368,6 +376,20 @@
     </footer>
     <!-- Footer Section End -->
 
+    <script>
+        document.getElementById("nextStsepBtn").addEventListener("click", function () {
+            event.preventDefault();
+            // window.location.href = `invitation_final.html`;
+            let visitorCount = document.getElementById("numOfVisitors").value;
+            let Citizenship = document.getElementById("Citizenship").value;
+            let Currency = document.getElementById("currency").value;
+            let Language = document.getElementById("Language").value;
+            let visatype = document.getElementById("visatype").value;
+
+            window.location.href = `invitation_final.html?numofvisitors=${encodeURIComponent(visitorCount)}&Citizenship=${encodeURIComponent(Citizenship)}&Currency=${encodeURIComponent(Currency)}&Language=${encodeURIComponent(Language)}&visatype=${encodeURIComponent(visatype)}`;
+
+        })
+    </script>
     <!-- Search model Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -388,9 +410,13 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-    <script src="../js/next.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <!-- <script src="../js/next.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
