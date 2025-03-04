@@ -185,26 +185,27 @@ function addVisitor(index) {
 </div>
 <div class="visitor-body">
     <label>Your Name</label>
-    <input type="text" placeholder="Name, middle name">
+    <input type="text"  id="name${index}" placeholder="Name, middle name"required>
     
     <label>Family Name</label>
-    <input type="text" placeholder="Name, middle name">
+    <input type="text" id ="family-name${index}" placeholder="Name, middle name"required>
    <label>Visa type</label>
     <select id="visa-type${index}">
-        <option value="">Select your visa type</option>
+        <option value="0">Select your visa type</option>
         <option value="1">Single-entry tourist visa</option>
         <option value="3">Double-entry tourist visa</option>
         <option value="12">Business visa</option>
     </select>
 
+    <div class="business-fields-${index}">
     <label>Length of your stay</label>
     <div class="stay">
         <label for="from${index}">from</label>
 
-        <input type="date" id="from${index}" class="date-placeholder">
+        <input type="date" id="from${index}" class="date-placeholder"required>
         <label for="to${index}"">to</label>
 
-        <input type="date" id="to${index}" class="date-placeholder">
+        <input type="date" id="to${index}" class="date-placeholder"required>
     </div>
 
     <label>Date of Birth</label>
@@ -222,21 +223,21 @@ function addVisitor(index) {
     <label>Gender</label>
     <div class="gender">
         <div>
-            <input type="radio" name="gender-${index}" value="Male" id="male-${index}">
+            <input type="radio" name="gender-${index}" value="Male" id="male-${index}"required>
             <label for="male-${index}"> Male</label>
         </div>
         <div>
-            <input type="radio" id="female-${index}" name="gender-${index}" value="Female">
+            <input type="radio" id="female-${index}" name="gender-${index}" value="Female"required>
             <label for="female-${index}">Female</label>
         </div>
     </div>
     
     <label>Citizenship</label>
     
-        <input type="text" class="count" id="citizenship${index}">
+        <input type="text" class="count" id="citizenship${index}"required>
 
     <label>Passport number</label>
-    <input type="text">
+    <input type="text"required>
 
     <label>Valid through</label>
     <div class="date">
@@ -269,17 +270,50 @@ function addVisitor(index) {
   let visaTypeSelect = document.getElementById(`visa-type${index}`);
   let fromInput = document.getElementById(`from${index}`);
   let toInput = document.getElementById(`to${index}`);
-//   let citizenshipSelect = document.getElementById(`citizenship${index}`);
 
-//   countries.forEach((city) => {
-//     let option = document.createElement("option");
-//     option.value = city;
-//     option.textContent = city;
-//     citizenshipSelect.appendChild(option);
-//   });
 
   visaTypeSelect.addEventListener("change", () => updateToDate(visaTypeSelect, fromInput, toInput));
   fromInput.addEventListener("change", () => updateToDate(visaTypeSelect, fromInput, toInput));
+  
+  visaTypeSelect.addEventListener("change", () => {
+    updateToDate(visaTypeSelect, fromInput, toInput);
+    
+    // Check if business visa is selected
+    if (visaTypeSelect.value === "12") {
+      addBusinessFields(index);
+    } else {
+      removeBusinessFields(index);
+    }
+  });
+}
+
+function addBusinessFields(index) {
+  let visitorBody = document.querySelector(`#visa-type${index}`).closest(".visitor-body");
+
+  // Check if fields already exist
+  if (document.getElementById(`business-fields-${index}`)) return;
+
+  let businessFields = document.createElement("div");
+  businessFields.id = `business-fields-${index}`;
+  businessFields.innerHTML = `
+    <label>City of getting visa</label>
+    <input type="text" id="City-of-getting-visa-${index}" placeholder="Enter City of getting visa"required>
+    
+    <label>Date of arrival in Russiae</label>
+    <input type="date" id="Date-of-arrival-in-Russia-${index}" placeholder="Date of arrival in Russia"required>
+
+    <label>Passport main page</label>
+    <input type="file" id="Passport-main-page-${index}" placeholder="Passport main page"required>
+  `;
+
+  visitorBody.appendChild(businessFields);
+}
+
+function removeBusinessFields(index) {
+  let businessFields = document.getElementById(`business-fields-${index}`);
+  if (businessFields) {
+    businessFields.remove();
+  }
 }
 
 function populateDropdown(id, start, end, labels = null) {
@@ -329,201 +363,6 @@ for (let index = 1; index <= visitorCount; index++) {
   addVisitor(index);
 }
 
-// function addVisitor(index) {
-//   if (index > visitorCount) {
-//     visitorCount = index;
-//   }
-
-//   // Remove previous "Add Visitor" button
-//   const prevButton = document.querySelector(".add-visitor-btn");
-//   if (prevButton) prevButton.remove();
-
-//   const visitorDiv = document.createElement("div");
-//   visitorDiv.className = "visitor-section";
-//   visitorDiv.innerHTML = `
-// <div class="visitor-header">
-
-//     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-// <path d="M18 2H6C4.34 2 3 3.33 3 4.97V15.88C3 17.52 4.34 18.85 6 18.85H6.76C7.56 18.85 8.32 19.16 8.88 19.72L10.59 21.41C11.37 22.18 12.64 22.18 13.42 21.41L15.13 19.72C15.69 19.16 16.46 18.85 17.25 18.85H18C19.66 18.85 21 17.52 21 15.88V4.97C21 3.33 19.66 2 18 2ZM12 5.75C13.29 5.75 14.33 6.79 14.33 8.08C14.33 9.37 13.29 10.41 12 10.41C10.71 10.41 9.67 9.36 9.67 8.08C9.67 6.79 10.71 5.75 12 5.75ZM14.68 15.06H9.32C8.51 15.06 8.04 14.16 8.49 13.49C9.17 12.48 10.49 11.8 12 11.8C13.51 11.8 14.83 12.48 15.51 13.49C15.96 14.16 15.48 15.06 14.68 15.06Z" fill="white"/>
-// </svg> Visitor (${index}) details
-//     <button class="add-visitor-btn">+ Add a visitor</button>
-// </div>
-// <div class="visitor-body">
-//     <label>Your Name</label>
-//     <input type="text" placeholder="Name, middle name">
-    
-//     <label>Family Name</label>
-//     <input type="text" placeholder="Name, middle name">
-//    <label>Visa type</label>
-//     <select id="visa-type${index}">
-//         <option value="">Select your visa type</option>
-//         <option value="1">Single-entry tourist visa</option>
-//         <option value="3">Double-entry tourist visa</option>
-//         <option value="12">Business visa</option>
-//     </select>
-
-//     <label>Length of your stay</label>
-//     <div class="stay">
-//         <input type="date" id="from${index}"  placeholder="form" class="date-placeholder">
-//         <input type="date" id="to${index}"  placeholder="to" class="date-placeholder">
-//     </div>
-
-//     <label>Date of Birth</label>
-
-// <div class="date">
-// <label for="day-birth${index}">Day</label>
-// <select id="day-birth${index}"></select>
-
-// <label for="month-birth${index}">Month</label>
-// <select id="month-birth${index}"></select>
-
-// <label for="year-birth${index}">Year</label>
-// <select id="year-birth${index}"></select>
-
-//      </div>
-    
-//     <label>Gender</label>
-//     <div class="gender">
-//     <div>
-//     <input type="radio" name="gender-${index}" value="Male" id="male"><label for="male"> Male</label>
-//     </div>
-//     <div>
-//     <input type="radio" id="female" name="gender-${index}" value="Female"><label for="female">Female</label>
-//     </div>
-//     </div>
-    
-//       <label>Citizenship</label>
-//       <select id="citizenship${index}">>
-
-//       </select>
-// <label> Passport number</label>
-//     <input type="text" placeholder="">
-//      <label>Valid through</label>
-//      <div class="date">
-// <label for="day-valid${index}">Day</label>
-// <select id="day-valid${index}"></select>
-
-// <label for="month-valid${index}">Month</label>
-// <select id="month-valid${index}"></select>
-
-// <label for="year-valid${index}">Year</label>
-// <select id="year-valid${index}"></select>
-//      </div>
-// </div>
-// `;
-
-//   visitorContainer.appendChild(visitorDiv);
-
-//   // Attach event to the new "Add Visitor" button
-//   visitorDiv
-//     .querySelector(".add-visitor-btn")
-//     .addEventListener("click", () => addVisitor(index + 1));
-
-//   const daySelect = document.getElementById(`day-birth${index}`);
-//   const dayvSelect = document.getElementById(`day-valid${index}`);
-//   for (let i = 1; i <= 31; i++) {
-//     let option1 = document.createElement("option");
-//     let option2 = document.createElement("option");
-
-//     option1.value = option2.value = i;
-//     option1.textContent = option2.textContent = i;
-
-//     daySelect.appendChild(option1);
-//     dayvSelect.appendChild(option2);
-//   }
-//   // Populate months (January - December)
-//   const monthSelect = document.getElementById(`month-birth${index}`);
-//   const monthvSelect = document.getElementById(`month-valid${index}`);
-// 
-
-//   monthNames.forEach((month, index) => {
-//     let option1 = document.createElement("option");
-//     let option2 = document.createElement("option");
-
-//     option1.value = option2.value = index + 1;
-//     option1.textContent = option2.textContent = month;
-
-//     monthSelect.appendChild(option1);
-//     monthvSelect.appendChild(option2);
-//   });
-
-//   // Populate years (1900 - Current Year)
-//   const yearSelect = document.getElementById(`year-birth${index}`);
-//   const yearvSelect = document.getElementById(`year-valid${index}`);
-//   const currentYear = new Date().getFullYear();
-
-//   for (let i = currentYear; i >= 1900; i--) {
-//     let option1 = document.createElement("option");
-//     let option2 = document.createElement("option");
-
-//     option1.value = option2.value = i;
-//     option1.textContent = option2.textContent = i;
-
-//     yearSelect.appendChild(option1);
-//     yearvSelect.appendChild(option2);
-//   }
-//   let visaTypeSelect = document.getElementById(`visa-type${index}`);
-//   let fromInput = document.getElementById(`from${index}`);
-//   let toInput = document.getElementById(`to${index}`);
-//   let citizenshipSelect = document.getElementById(`citizenship${index}`);
-
-//   countries.forEach((city) => {
-//     let option = document.createElement("option");
-//     option.value = city;
-//     option.textContent = city;
-//     citizenshipSelect.appendChild(option);
-//   });
-//   updateToDate(visaTypeSelect, fromInput, toInput);
-// }
-
-// for (let index = 1; index <= visitorCount; index++) {
-//   addVisitor(index);
-//   // alert(visitorCount);
-// }
-
-// function updateToDate(v, f, toInput) {
-//   alert("d");
-//   let visaType = v.value;
-//   let fromDateValue = f.value;
-
-//   if (!visaType || !fromDateValue) {
-//     toInput.value = "";
-//     toInput.removeAttribute("max");
-//     return;
-//   }
-
-//   let fromDate = new Date(fromDateValue);
-//   let toDate = new Date(fromDate);
-
-//   toDate.setMonth(toDate.getMonth() + parseInt(visaType)); // Add months based on visa type
-
-//   let maxDate = toDate.toISOString().split("T")[0]; // Convert to YYYY-MM-DD format
-//   toInput.value = maxDate;
-//   toInput.setAttribute("max", maxDate);
-
-//   // Attach event listeners
-//   visaTypeSelect.addEventListener("change", updateToDate);
-//   fromInput.addEventListener("change", updateToDate);
-// }
-
-//   document.addEventListener("DOMContentLoaded", function () {
-//     const dateInput = document.getElementById("dateInput");
-
-//     dateInput.addEventListener("input", function () {
-//         if (dateInput.value) {
-//             dateInput.classList.remove("empty");
-//         } else {
-//             dateInput.classList.add("empty");
-//         }
-//     });
-
-//     if (!dateInput.value) {
-//         dateInput.classList.add("empty");
-//     }
-// });
-
-// Start with one visitor
-
 const cityContainer = document.getElementById("city-container");
 const cityContainerbtn = document.getElementById("city-containerbtn");
 
@@ -532,14 +371,13 @@ function addcity(index) {
     cityCount += 1;
     addcity(cityCount);
   };
-  console.log(cityCount);
   const citydiv = document.createElement("div");
   citydiv.className = "city-section";
   citydiv.innerHTML = `
 <div class="city-header">
 <div class="city-body">
     <label>City</label>
-      <select id="city${index}">
+      <select id="city${index}" required>
       </select>
     
     </div>
@@ -583,3 +421,94 @@ function checkVisibility() {
 window.addEventListener("scroll", checkVisibility);
 window.addEventListener("resize", checkVisibility);
 document.addEventListener("DOMContentLoaded", checkVisibility);
+document.getElementById("submitButton").addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent default form submission
+
+  let isValid = true;
+  let missingFields = [];
+
+  // Select all required fields within #content
+  let requiredFields = document.querySelectorAll("#content input[required], #content select[required]");
+
+  requiredFields.forEach(function (field) {
+      let fieldValue = field.value;
+      let fieldLabel = field.closest("div")?.querySelector("label")?.innerText || field.placeholder || field.name || "Field";
+
+      // Special check for <select> fields with "0" as the default value
+      let isInvalid = !fieldValue || (field.tagName === "SELECT" && fieldValue === "0");
+      alert(fieldValue);
+
+      if (isInvalid) {
+          isValid = false;
+          missingFields.push(fieldLabel);
+          field.style.border = "2px solid red"; // Highlight input
+
+          // Remove existing error message before adding a new one
+          let existingError = field.parentNode.querySelector(".error-msg");
+          if (existingError) existingError.remove();
+
+          // Add new error message
+          let errorSpan = document.createElement("span");
+          errorSpan.classList.add("error-msg");
+          errorSpan.style.color = "red";
+          errorSpan.style.fontSize = "12px";
+          errorSpan.style.display = "block";
+          errorSpan.style.marginTop = "5px";
+          errorSpan.innerText = `${fieldLabel} is required`;
+          field.parentNode.appendChild(errorSpan);
+      } else {
+          field.style.border = ""; // Remove red border if valid
+          let errorSpan = field.parentNode.querySelector(".error-msg");
+          if (errorSpan) errorSpan.remove(); // Remove error if field is corrected
+      }
+  });
+
+  // Validate language selection (custom dropdown)
+  let languageField = document.querySelector(".lan-input");
+  if (languageField && languageField.innerText.trim().toLowerCase() === "language") {
+      isValid = false;
+      missingFields.push("Language");
+      languageField.style.border = "2px solid red";
+
+      let existingError = languageField.parentNode.querySelector(".error-msg");
+      if (!existingError) {
+          let errorSpan = document.createElement("span");
+          errorSpan.classList.add("error-msg");
+          errorSpan.style.color = "red";
+          errorSpan.innerText = "Please select a language";
+          languageField.parentNode.appendChild(errorSpan);
+      }
+  } else {
+      languageField.style.border = "";
+      let errorSpan = languageField.parentNode.querySelector(".error-msg");
+      if (errorSpan) errorSpan.remove();
+  }
+
+  // Validate checkbox (Terms agreement)
+  let termsCheckbox = document.getElementById("agreeTerms");
+  if (termsCheckbox && !termsCheckbox.checked) {
+      isValid = false;
+      missingFields.push("Agreement to Terms of Service");
+      termsCheckbox.style.outline = "2px solid red";
+
+      let existingError = termsCheckbox.parentNode.querySelector(".error-msg");
+      if (!existingError) {
+          let errorSpan = document.createElement("span");
+          errorSpan.classList.add("error-msg");
+          errorSpan.style.color = "red";
+          errorSpan.innerText = "You must agree to the terms";
+          termsCheckbox.parentNode.appendChild(errorSpan);
+      }
+  } else {
+      termsCheckbox.style.outline = "";
+      let errorSpan = termsCheckbox.parentNode.querySelector(".error-msg");
+      if (errorSpan) errorSpan.remove();
+  }
+
+  // Show alert if any field is missing
+  if (!isValid) {
+      alert("Please fill in the following fields:\n" + missingFields.join("\n"));
+  } else {
+      alert("All fields are valid! Proceeding...");
+  }
+});

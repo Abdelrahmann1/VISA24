@@ -3067,6 +3067,10 @@ ol {
 	line-height: normal;
 	width: 100%;
 }
+.error {
+    border: 2px solid red;
+}
+
 
 .faq-title {
 	text-align: center;

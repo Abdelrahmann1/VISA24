@@ -318,7 +318,9 @@ font-style: normal;
 font-weight: 500;
 line-height: normal;
 }
-
+.country-select{
+    width: 60% !important;
+}
 .amount-box {
     background-color: #d2d2f3;
     padding: 10px 15px;
