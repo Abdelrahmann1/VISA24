@@ -264,8 +264,8 @@ function addVisitor(index) {
   populateDropdown(`day-valid${index}`, 1, 31);
   populateDropdown(`month-birth${index}`, 1, 12, monthNames);
   populateDropdown(`month-valid${index}`, 1, 12, monthNames);
-  populateDropdowndate(`year-birth${index}`, 1960, new Date().getFullYear());
-  populateDropdown(`year-valid${index}`, 2020, 2035);
+  populateDropdowndate(`year-birth${index}`, new Date().getFullYear() - 70, new Date().getFullYear());
+  populateDropdown(`year-valid${index}`,  new Date().getFullYear() - 5, new Date().getFullYear() + 15);
 
   let visaTypeSelect = document.getElementById(`visa-type${index}`);
   let fromInput = document.getElementById(`from${index}`);
