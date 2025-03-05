@@ -264,8 +264,8 @@ function addVisitor(index) {
   populateDropdown(`day-valid${index}`, 1, 31);
   populateDropdown(`month-birth${index}`, 1, 12, monthNames);
   populateDropdown(`month-valid${index}`, 1, 12, monthNames);
-  populateDropdown(`year-birth${index}`, 1900, new Date().getFullYear());
-  populateDropdown(`year-valid${index}`, 1900, new Date().getFullYear());
+  populateDropdowndate(`year-birth${index}`, 1960, new Date().getFullYear());
+  populateDropdown(`year-valid${index}`, 2020, 2035);
 
   let visaTypeSelect = document.getElementById(`visa-type${index}`);
   let fromInput = document.getElementById(`from${index}`);
@@ -325,6 +325,16 @@ function populateDropdown(id, start, end, labels = null) {
     select.appendChild(option);
   }
 }
+function populateDropdowndate(id, start, end, labels = null) {
+  let select = document.getElementById(id);
+  for (let i = end; i >= start; i--) { // Fix: Decrement i in loop condition
+    let option = document.createElement("option");
+    option.value = i;
+    option.textContent = labels ? labels[i - start] : i; // Adjust index for labels
+    select.appendChild(option);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".count").forEach(function (element) {
         // Listen for changes and alert the selected country
