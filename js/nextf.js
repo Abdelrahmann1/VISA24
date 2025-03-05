@@ -1,20 +1,17 @@
-
 const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-    
-    
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 const russianCities = [
   "Moscow",
@@ -163,8 +160,6 @@ let visatype = params.get("visatype");
 let cityCount = 1;
 let visitorContainer = document.getElementById("visitor-container");
 
-
-
 function addVisitor(index) {
   if (index > visitorCount) {
     visitorCount = index;
@@ -252,32 +247,48 @@ function addVisitor(index) {
     </div>
 </div>
 `;
-// $(`citizenship${index}`).countrySelect();
-// document.querySelector(`#citizenship${index}`).countrySelect();
-
+  // $(`citizenship${index}`).countrySelect();
+  // document.querySelector(`#citizenship${index}`).countrySelect();
 
   visitorContainer.appendChild(visitorDiv);
 
-  visitorDiv.querySelector(".add-visitor-btn").addEventListener("click", () => addVisitor(index + 1));
+  visitorDiv
+    .querySelector(".add-visitor-btn")
+    .addEventListener("click", () => addVisitor(index + 1));
 
-  populateDropdown(`day-birth${index}`, 1, 31);
-  populateDropdown(`day-valid${index}`, 1, 31);
-  populateDropdown(`month-birth${index}`, 1, 12, monthNames);
-  populateDropdown(`month-valid${index}`, 1, 12, monthNames);
-  populateDropdowndate(`year-birth${index}`, new Date().getFullYear() - 70, new Date().getFullYear());
-  populateDropdown(`year-valid${index}`,  new Date().getFullYear() - 5, new Date().getFullYear() + 15);
+  populateDropdown(`day-birth${index}`, 1, 31, null, "day");
+  populateDropdown(`day-valid${index}`, 1, 31, null, "day");
+  populateDropdown(`month-birth${index}`, 1, 12, monthNames, "month");
+  populateDropdown(`month-valid${index}`, 1, 12, monthNames, "month");
+  populateDropdowndate(
+    `year-birth${index}`,
+    new Date().getFullYear() - 70,
+    new Date().getFullYear(),
+    null,
+    "year"
+  );
+  populateDropdown(
+    `year-valid${index}`,
+    new Date().getFullYear() - 5,
+    new Date().getFullYear() + 15,
+    null,
+    "year"
+  );
 
   let visaTypeSelect = document.getElementById(`visa-type${index}`);
   let fromInput = document.getElementById(`from${index}`);
   let toInput = document.getElementById(`to${index}`);
 
+  visaTypeSelect.addEventListener("change", () =>
+    updateToDate(visaTypeSelect, fromInput, toInput)
+  );
+  fromInput.addEventListener("change", () =>
+    updateToDate(visaTypeSelect, fromInput, toInput)
+  );
 
-  visaTypeSelect.addEventListener("change", () => updateToDate(visaTypeSelect, fromInput, toInput));
-  fromInput.addEventListener("change", () => updateToDate(visaTypeSelect, fromInput, toInput));
-  
   visaTypeSelect.addEventListener("change", () => {
     updateToDate(visaTypeSelect, fromInput, toInput);
-    
+
     // Check if business visa is selected
     if (visaTypeSelect.value === "12") {
       addBusinessFields(index);
@@ -288,7 +299,9 @@ function addVisitor(index) {
 }
 
 function addBusinessFields(index) {
-  let visitorBody = document.querySelector(`#visa-type${index}`).closest(".visitor-body");
+  let visitorBody = document
+    .querySelector(`#visa-type${index}`)
+    .closest(".visitor-body");
 
   // Check if fields already exist
   if (document.getElementById(`business-fields-${index}`)) return;
@@ -316,8 +329,12 @@ function removeBusinessFields(index) {
   }
 }
 
-function populateDropdown(id, start, end, labels = null) {
+function populateDropdown(id, start, end, labels = null, d = null) {
   let select = document.getElementById(id);
+  let option = document.createElement("option");
+  option.value = "";
+  option.textContent = "select " + d;
+  select.appendChild(option);
   for (let i = start; i <= end; i++) {
     let option = document.createElement("option");
     option.value = i;
@@ -325,9 +342,14 @@ function populateDropdown(id, start, end, labels = null) {
     select.appendChild(option);
   }
 }
-function populateDropdowndate(id, start, end, labels = null) {
+function populateDropdowndate(id, start, end, labels = null, d = null) {
   let select = document.getElementById(id);
-  for (let i = end; i >= start; i--) { // Fix: Decrement i in loop condition
+  let option = document.createElement("option");
+  option.value = "";
+  option.textContent = "select " + d;
+  select.appendChild(option);
+  for (let i = end; i >= start; i--) {
+    // Fix: Decrement i in loop condition
     let option = document.createElement("option");
     option.value = i;
     option.textContent = labels ? labels[i - start] : i; // Adjust index for labels
@@ -336,20 +358,31 @@ function populateDropdowndate(id, start, end, labels = null) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".count").forEach(function (element) {
-        // Listen for changes and alert the selected country
-        element.addEventListener("change", function () {
-            let countryData = window.countrySelect && $(element).countrySelect("getSelectedCountryData");
-            if (countryData && countryData.name) {
-                alert("Selected Country: " + countryData.name);
-            } else {
-                alert("No country selected");
-            }
-        });
+  document.querySelectorAll(".count").forEach(function (element) {
+    // Listen for changes and alert the selected country
+    element.addEventListener("change", function () {
+      let countryData =
+        window.countrySelect &&
+        $(element).countrySelect("getSelectedCountryData");
+      if (countryData && countryData.name) {
+        alert("Selected Country: " + countryData.name);
+      } else {
+        alert("No country selected");
+      }
     });
+  });
 });
 
+// document.getElementById("currency").addEventListener("change", function () {
+//   alert('Currency changed'); // Debugging alert
+//   let selectedCurrency = this.value;
+//   let amountElements = document.querySelectorAll(".totalAmount");
 
+//   amountElements.forEach(element => {
+//       let amount = 150; // Update this with actual conversion logic if needed
+//       element.textContent = `Total Amount: ${amount} ${selectedCurrency}`;
+//   });
+// });
 function updateToDate(v, f, toInput) {
   let visaType = v.value;
   let fromDateValue = f.value;
@@ -431,94 +464,108 @@ function checkVisibility() {
 window.addEventListener("scroll", checkVisibility);
 window.addEventListener("resize", checkVisibility);
 document.addEventListener("DOMContentLoaded", checkVisibility);
-document.getElementById("submitButton").addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent default form submission
+document
+  .getElementById("submitButton")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent default form submission
 
-  let isValid = true;
-  let missingFields = [];
+    let isValid = true;
+    let missingFields = [];
 
-  // Select all required fields within #content
-  let requiredFields = document.querySelectorAll("#content input[required], #content select[required]");
+    // Select all required fields within #content
+    let requiredFields = document.querySelectorAll(
+      "#content input[required], #content select[required]"
+    );
 
-  requiredFields.forEach(function (field) {
+    requiredFields.forEach(function (field) {
       let fieldValue = field.value;
-      let fieldLabel = field.closest("div")?.querySelector("label")?.innerText || field.placeholder || field.name || "Field";
+      let fieldLabel =
+        field.closest("div")?.querySelector("label")?.innerText ||
+        field.placeholder ||
+        field.name ||
+        "Field";
 
       // Special check for <select> fields with "0" as the default value
-      let isInvalid = !fieldValue || (field.tagName === "SELECT" && fieldValue === "0");
+      let isInvalid =
+        !fieldValue || (field.tagName === "SELECT" && fieldValue === "0");
       alert(fieldValue);
 
       if (isInvalid) {
-          isValid = false;
-          missingFields.push(fieldLabel);
-          field.style.border = "2px solid red"; // Highlight input
+        isValid = false;
+        missingFields.push(fieldLabel);
+        field.style.border = "2px solid red"; // Highlight input
 
-          // Remove existing error message before adding a new one
-          let existingError = field.parentNode.querySelector(".error-msg");
-          if (existingError) existingError.remove();
+        // Remove existing error message before adding a new one
+        let existingError = field.parentNode.querySelector(".error-msg");
+        if (existingError) existingError.remove();
 
-          // Add new error message
-          let errorSpan = document.createElement("span");
-          errorSpan.classList.add("error-msg");
-          errorSpan.style.color = "red";
-          errorSpan.style.fontSize = "12px";
-          errorSpan.style.display = "block";
-          errorSpan.style.marginTop = "5px";
-          errorSpan.innerText = `${fieldLabel} is required`;
-          field.parentNode.appendChild(errorSpan);
+        // Add new error message
+        let errorSpan = document.createElement("span");
+        errorSpan.classList.add("error-msg");
+        errorSpan.style.color = "red";
+        errorSpan.style.fontSize = "12px";
+        errorSpan.style.display = "block";
+        errorSpan.style.marginTop = "5px";
+        errorSpan.innerText = `${fieldLabel} is required`;
+        field.parentNode.appendChild(errorSpan);
       } else {
-          field.style.border = ""; // Remove red border if valid
-          let errorSpan = field.parentNode.querySelector(".error-msg");
-          if (errorSpan) errorSpan.remove(); // Remove error if field is corrected
+        field.style.border = ""; // Remove red border if valid
+        let errorSpan = field.parentNode.querySelector(".error-msg");
+        if (errorSpan) errorSpan.remove(); // Remove error if field is corrected
       }
-  });
+    });
 
-  // Validate language selection (custom dropdown)
-  let languageField = document.querySelector(".lan-input");
-  if (languageField && languageField.innerText.trim().toLowerCase() === "language") {
+    // Validate language selection (custom dropdown)
+    let languageField = document.querySelector(".lan-input");
+    if (
+      languageField &&
+      languageField.innerText.trim().toLowerCase() === "language"
+    ) {
       isValid = false;
       missingFields.push("Language");
       languageField.style.border = "2px solid red";
 
       let existingError = languageField.parentNode.querySelector(".error-msg");
       if (!existingError) {
-          let errorSpan = document.createElement("span");
-          errorSpan.classList.add("error-msg");
-          errorSpan.style.color = "red";
-          errorSpan.innerText = "Please select a language";
-          languageField.parentNode.appendChild(errorSpan);
+        let errorSpan = document.createElement("span");
+        errorSpan.classList.add("error-msg");
+        errorSpan.style.color = "red";
+        errorSpan.innerText = "Please select a language";
+        languageField.parentNode.appendChild(errorSpan);
       }
-  } else {
+    } else {
       languageField.style.border = "";
       let errorSpan = languageField.parentNode.querySelector(".error-msg");
       if (errorSpan) errorSpan.remove();
-  }
+    }
 
-  // Validate checkbox (Terms agreement)
-  let termsCheckbox = document.getElementById("agreeTerms");
-  if (termsCheckbox && !termsCheckbox.checked) {
+    // Validate checkbox (Terms agreement)
+    let termsCheckbox = document.getElementById("agreeTerms");
+    if (termsCheckbox && !termsCheckbox.checked) {
       isValid = false;
       missingFields.push("Agreement to Terms of Service");
       termsCheckbox.style.outline = "2px solid red";
 
       let existingError = termsCheckbox.parentNode.querySelector(".error-msg");
       if (!existingError) {
-          let errorSpan = document.createElement("span");
-          errorSpan.classList.add("error-msg");
-          errorSpan.style.color = "red";
-          errorSpan.innerText = "You must agree to the terms";
-          termsCheckbox.parentNode.appendChild(errorSpan);
+        let errorSpan = document.createElement("span");
+        errorSpan.classList.add("error-msg");
+        errorSpan.style.color = "red";
+        errorSpan.innerText = "You must agree to the terms";
+        termsCheckbox.parentNode.appendChild(errorSpan);
       }
-  } else {
+    } else {
       termsCheckbox.style.outline = "";
       let errorSpan = termsCheckbox.parentNode.querySelector(".error-msg");
       if (errorSpan) errorSpan.remove();
-  }
+    }
 
-  // Show alert if any field is missing
-  if (!isValid) {
-      alert("Please fill in the following fields:\n" + missingFields.join("\n"));
-  } else {
+    // Show alert if any field is missing
+    if (!isValid) {
+      alert(
+        "Please fill in the following fields:\n" + missingFields.join("\n")
+      );
+    } else {
       alert("All fields are valid! Proceeding...");
-  }
-});
+    }
+  });
