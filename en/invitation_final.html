@@ -179,37 +179,20 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="hs-1">
+                    <div class="hs-1" id="currency-div">
                         <label> Currency</label>
                         <select id="currency">
                             <option value="USD">USD</option>
                             <option value="EUR">EUR</option>
-                            <option value="EGP">EGP</option>
+                            <option value="RUB">RUB</option>
+
                         </select>
                     </div>
                 </div>
             </div>
-            <script>document.addEventListener("DOMContentLoaded", function () {
-                    let niceSelect = document.querySelector(".nice-select");
-
-                    if (niceSelect) {
-                        niceSelect.addEventListener("click", function (event) {
-                            let selectedOption = event.target.closest(".option");
-                            if (selectedOption) {
-                                let selectedCurrency = selectedOption.getAttribute("data-value");
-                                // document.querySelectorAll(".totalAmount").textContent = `Total Amount: 150 ${selectedCurrency}`;
-                                let amountElements = document.querySelectorAll(".totalAmount");
-
-                                amountElements.forEach(element => {
-                                    let amount = 150; // Update this with actual conversion logic if needed
-                                    element.textContent = `Total Amount: ${amount} ${selectedCurrency}`;
-                                });
-                            }
-                        });
-                    } else {
-                        console.error("Custom select element not found!");
-                    }
-                });</script>
+            <script>
+          
+                </script>
             <p>Next complete the form</p>
 
             <div id="visitor-container"></div>
@@ -439,6 +422,7 @@
         $(document).ready(function () {
             $(".count").countrySelect();
         });
+        
     </script>
 
 

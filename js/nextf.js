@@ -163,6 +163,8 @@ let visitorContainer = document.getElementById("visitor-container");
 function addVisitor(index) {
   if (index > visitorCount) {
     visitorCount = index;
+    calcprice();
+
   }
 
   // Remove previous "Add Visitor" button
@@ -569,3 +571,111 @@ document
       alert("All fields are valid! Proceeding...");
     }
   });
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    calcprice();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  let currencySelect = document.getElementById("currency")
+  
+  // Remove the flag that locks the value
+  delete currencySelect.dataset.set
+  
+  // Force the default value from the variable
+  currencySelect.value = Currency
+  
+  // Update the nice select display to match
+  let niceSelect = currencySelect.nextElementSibling
+  if (niceSelect && niceSelect.classList.contains("nice-select")) {
+    let currentDisplay = niceSelect.querySelector(".current")
+    if (currentDisplay) {
+      currentDisplay.textContent = Currency
+    }
+    let allOptions = niceSelect.querySelectorAll(".option")
+    allOptions.forEach(option => {
+      if (option.getAttribute("data-value") === Currency) {
+        option.classList.add("selected")
+      } else {
+        option.classList.remove("selected")
+      }
+    })
+  }
+  
+  calcprice()
+})
+
+async function calcprice() {
+  let currencySelect = document.getElementById("currency")
+  let currentSelectedValue = Currency
+
+  let amountElements = document.querySelectorAll(".totalAmount")
+  amountElements.forEach(element => {
+    let amount = visitorCount * 11
+    element.textContent = "Total Amount: " + amount + " " + currentSelectedValue
+  })
+
+
+  let niceSelect = currencySelect.nextElementSibling
+  if (niceSelect) {
+    niceSelect.addEventListener("click", async function (event) {
+      let selectedOption = event.target.closest(".option")
+      if (selectedOption) {
+        let selectedCurrency = selectedOption.getAttribute("data-value")
+        currencySelect.value = selectedCurrency
+
+        let currentDisplay = niceSelect.querySelector(".current")
+        if (currentDisplay) {
+          currentDisplay.textContent = selectedCurrency
+        }
+
+        let amountElements = document.querySelectorAll(".totalAmount")
+        // amountElements.forEach(element => {
+        //   let amount = visitorCount * 11
+        //   element.textContent = "Total Amount: " + amount + " " + selectedCurrency
+        // })
+
+
+        let allOptions = niceSelect.querySelectorAll(".option")
+        allOptions.forEach(option => {
+          if (option.getAttribute("data-value") === selectedCurrency) {
+            option.classList.add("selected")
+          } else {
+            option.classList.remove("selected")
+          }
+        })
+      }
+    })
+  }
+}
+
+// async function updatePrice() {
+//   let currencySelect = document.getElementById("currency")
+//   let selectedCurrency = currencySelect.value
+//   let baseAmount = visitorCount * 11
+//   let finalAmount = baseAmount
+//   alert(selectedCurrency);
+
+//   if (selectedCurrency !== "EUR") {
+//     try {
+//       let response = await fetch(
+//         `https://api.exchangerate.host/latest?base=EUR&symbols=${selectedCurrency}`
+//       )
+//       let data = await response.json()
+//       let rate = data.rates[selectedCurrency]
+//       finalAmount = baseAmount * rate
+//     } catch (error) {
+//       console.error("Error fetching conversion rate", error)
+//     }
+//   }
+
+//   let amountElements = document.querySelectorAll(".totalAmount")
+//   amountElements.forEach(element => {
+//     element.textContent =
+//       "Total Amount: " + finalAmount.toFixed(2) + " " + selectedCurrency
+//   })
+// }
+
+
+
