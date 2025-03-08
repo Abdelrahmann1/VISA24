@@ -3186,3 +3186,23 @@ ol {
     max-height: 200px !important; /* Limit height */
     overflow-y: scroll !important ; /* Enable scrolling */
 }
+.appy-invite-btn {
+	padding: 20px 40px; /* Bootstrap padding-5 equivalent */
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	background-color: #005BBB; /* Blue color */
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	padding: 20px 40px; /* Bootstrap padding-5 equivalent */
+	
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.appy-invite-btn:hover {
+	background-color: #004899; /* Darker blue on hover */
+	transform: scale(1.05);
+	box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
