@@ -187,7 +187,7 @@ function addVisitor(index) {
     <label>Family Name</label>
     <input type="text" id ="family-name${index}" placeholder="Name, middle name"required>
    <label>Visa type</label>
-    <select id="visa-type${index}">
+    <select id="visa-type${index}" name="visa-type">
         <option value="0">Select your visa type</option>
         <option value="1">Single-entry tourist visa</option>
         <option value="3">Double-entry tourist visa</option>
@@ -199,53 +199,53 @@ function addVisitor(index) {
     <div class="stay">
         <label for="from${index}">from</label>
 
-        <input type="date" id="from${index}" class="date-placeholder"required>
+        <input type="date" id="from${index}" class="date-placeholder"required name="stay_from">
         <label for="to${index}"">to</label>
 
-        <input type="date" id="to${index}" class="date-placeholder"required>
+        <input type="date" id="to${index}" class="date-placeholder"required name="stay_to">
     </div>
 
     <label>Date of Birth</label>
     <div class="date">
-        <label for="day-birth${index}">Day</label>
-        <select id="day-birth${index}"></select>
+        <label for="day-birth${index}" >Day</label>
+        <select id="day-birth${index}"name="dob_day"></select>
 
         <label for="month-birth${index}">Month</label>
-        <select id="month-birth${index}"></select>
+        <select id="month-birth${index}"name="dob_month"></select>
 
         <label for="year-birth${index}">Year</label>
-        <select id="year-birth${index}"></select>
+        <select id="year-birth${index}"name="dob_year"></select>
     </div>
     
     <label>Gender</label>
     <div class="gender">
         <div>
-            <input type="radio" name="gender-${index}" value="Male" id="male-${index}"required>
+            <input type="radio" id="gender-${index}" name="Gender" value="Male" nam id="male-${index}"required checked >
             <label for="male-${index}"> Male</label>
         </div>
         <div>
-            <input type="radio" id="female-${index}" name="gender-${index}" value="Female"required>
+            <input type="radio" id="female-${index}"name="Gender" id="gender-${index}" value="Female"required>
             <label for="female-${index}">Female</label>
         </div>
     </div>
     
     <label>Citizenship</label>
     
-        <input type="text" class="count" id="citizenship${index}"required>
+        <input type="text" class="count" id="citizenship${index}"required name="Citizenship">
 
     <label>Passport number</label>
-    <input type="text"required>
+    <input type="text"required name="Passport number">
 
     <label>Valid through</label>
     <div class="date">
         <label for="day-valid${index}">Day</label>
-        <select id="day-valid${index}"></select>
+        <select id="day-valid${index}" name="valid_day"></select>
 
         <label for="month-valid${index}">Month</label>
-        <select id="month-valid${index}"></select>
+        <select id="month-valid${index}" name="valid_month"></select>
 
         <label for="year-valid${index}">Year</label>
-        <select id="year-valid${index}"></select>
+        <select id="year-valid${index}" name="valid_year"></select>
     </div>
 </div>
 `;
@@ -334,7 +334,7 @@ function removeBusinessFields(index) {
 function populateDropdown(id, start, end, labels = null, d = null) {
   let select = document.getElementById(id);
   let option = document.createElement("option");
-  option.value = "";
+  option.value = "0";
   option.textContent = "select " + d;
   select.appendChild(option);
   for (let i = start; i <= end; i++) {
@@ -347,7 +347,7 @@ function populateDropdown(id, start, end, labels = null, d = null) {
 function populateDropdowndate(id, start, end, labels = null, d = null) {
   let select = document.getElementById(id);
   let option = document.createElement("option");
-  option.value = "";
+  option.value = "0";
   option.textContent = "select " + d;
   select.appendChild(option);
   for (let i = end; i >= start; i--) {
@@ -422,7 +422,7 @@ function addcity(index) {
 <div class="city-header">
 <div class="city-body">
     <label>City</label>
-      <select id="city${index}" required>
+      <select id="city${index}" name="city" required>
       </select>
     
     </div>
@@ -462,6 +462,9 @@ function checkVisibility() {
     amountBox.classList.remove("hidden");
   }
 }
+document.getElementById("agreeTerms").addEventListener("change", function () {
+  console.log("Checkbox changed:", this.checked);
+});
 
 window.addEventListener("scroll", checkVisibility);
 window.addEventListener("resize", checkVisibility);
@@ -476,9 +479,11 @@ document
 
     // Select all required fields within #content
     let requiredFields = document.querySelectorAll(
-      "#content input[required], #content select[required]"
+      "#content input[required], #content select, #content input[type=radio]"
     );
+    
 
+    
     requiredFields.forEach(function (field) {
       let fieldValue = field.value;
       let fieldLabel =
@@ -490,30 +495,16 @@ document
       // Special check for <select> fields with "0" as the default value
       let isInvalid =
         !fieldValue || (field.tagName === "SELECT" && fieldValue === "0");
-      alert(fieldValue);
+      // alert(fieldValue);
 
       if (isInvalid) {
         isValid = false;
         missingFields.push(fieldLabel);
         field.style.border = "2px solid red"; // Highlight input
-
-        // Remove existing error message before adding a new one
         let existingError = field.parentNode.querySelector(".error-msg");
         if (existingError) existingError.remove();
-
-        // Add new error message
-        let errorSpan = document.createElement("span");
-        errorSpan.classList.add("error-msg");
-        errorSpan.style.color = "red";
-        errorSpan.style.fontSize = "12px";
-        errorSpan.style.display = "block";
-        errorSpan.style.marginTop = "5px";
-        errorSpan.innerText = `${fieldLabel} is required`;
-        field.parentNode.appendChild(errorSpan);
       } else {
         field.style.border = ""; // Remove red border if valid
-        let errorSpan = field.parentNode.querySelector(".error-msg");
-        if (errorSpan) errorSpan.remove(); // Remove error if field is corrected
       }
     });
 
@@ -529,38 +520,11 @@ document
 
       let existingError = languageField.parentNode.querySelector(".error-msg");
       if (!existingError) {
-        let errorSpan = document.createElement("span");
-        errorSpan.classList.add("error-msg");
-        errorSpan.style.color = "red";
-        errorSpan.innerText = "Please select a language";
-        languageField.parentNode.appendChild(errorSpan);
       }
     } else {
       languageField.style.border = "";
-      let errorSpan = languageField.parentNode.querySelector(".error-msg");
-      if (errorSpan) errorSpan.remove();
     }
 
-    // Validate checkbox (Terms agreement)
-    let termsCheckbox = document.getElementById("agreeTerms");
-    if (termsCheckbox && !termsCheckbox.checked) {
-      isValid = false;
-      missingFields.push("Agreement to Terms of Service");
-      termsCheckbox.style.outline = "2px solid red";
-
-      let existingError = termsCheckbox.parentNode.querySelector(".error-msg");
-      if (!existingError) {
-        let errorSpan = document.createElement("span");
-        errorSpan.classList.add("error-msg");
-        errorSpan.style.color = "red";
-        errorSpan.innerText = "You must agree to the terms";
-        termsCheckbox.parentNode.appendChild(errorSpan);
-      }
-    } else {
-      termsCheckbox.style.outline = "";
-      let errorSpan = termsCheckbox.parentNode.querySelector(".error-msg");
-      if (errorSpan) errorSpan.remove();
-    }
 
     // Show alert if any field is missing
     if (!isValid) {
@@ -568,10 +532,84 @@ document
         "Please fill in the following fields:\n" + missingFields.join("\n")
       );
     } else {
-      alert("All fields are valid! Proceeding...");
+      senddata();
     }
   });
-  
+ function senddata() {
+   let formData = new FormData();
+   
+   // Language and Currency
+   formData.append("currency", document.querySelector("[id='Currency']").value);
+
+   // Visitors (dynamic)
+   let visitors = [];
+   document.querySelectorAll(".visitor-section").forEach((visitor, index) => {
+        let visitorData = {
+          name: visitor.querySelector("[name='Your Name']").value,
+          familyName: visitor.querySelector("[name='Family Name']").value,
+          visaType: visitor.querySelector("[name='visatype']").value,
+          stayFrom: visitor.querySelector("[name='stay_from']").value,
+          stayTo: visitor.querySelector("[name='stay_to']").value,
+          dobDay: visitor.querySelector("[name='dob_day']").value,
+          dobMonth: visitor.querySelector("[name='dob_month']").value,
+          dobYear: visitor.querySelector("[name='dob_year']").value,
+          gender: visitor.querySelector("[name='Gender']:checked")?.value || "",
+          citizenship: visitor.querySelector("[name='Citizenship']").value,
+          passportNumber: visitor.querySelector("[name='Passport number']").value,
+          validUntilDay: visitor.querySelector("[name='valid_day']").value,
+          validUntilMonth: visitor.querySelector("[name='valid_month']").value,
+          validUntilYear: visitor.querySelector("[name='valid_year']").value
+        };
+        visitors.push(visitorData);
+      });
+      
+      formData.append("visitors", JSON.stringify(visitors));
+      
+      // Cities of stay
+      let cities = [];
+      document.querySelectorAll("[name='City']").forEach(city => cities.push(city.value));
+      formData.append("cities", JSON.stringify(cities));
+      
+      // Medical insurance checkbox
+      formData.append("medicalInsurance", document.querySelector("[name='medical_insurance']").checked ? "Yes" : "No");
+      
+      // Contact details
+      formData.append("email", document.querySelector("[name='Email']").value);
+      formData.append("phone", document.querySelector("[name='Phone']").value);
+      formData.append("specialInstructions", document.querySelector("[name='Special instructions']").value);
+      
+      // Send Data to PHP
+      
+      fetch("process_form.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.text())
+      .then(data => {
+        alert("Form submitted successfully!");
+        console.log(data);
+      })
+      .catch(error => {
+        console.error("Error submitting form:", error);
+      });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   document.addEventListener("DOMContentLoaded", function () {
     calcprice();
 });
