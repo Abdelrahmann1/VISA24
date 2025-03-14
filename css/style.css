@@ -878,7 +878,7 @@ ol {
 }
 
 .hp-room-items .hp-room-item:hover .hr-text h2 {
-	margin-bottom: 30px;
+	margin-bottom: 3px;
 }
 
 .hp-room-items .hp-room-item .hr-text {
@@ -893,15 +893,19 @@ ol {
 	background-color: #001A6E;
 	opacity: 0.85;
 }
-
+a:hover{
+	color: #001A6E;
+}
 .hp-room-items .hp-room-item .hr-text-1 {
-	bottom: -215px;
+	bottom: -125px;
 }
 
 .hp-room-items .hp-room-item .hr-text-2 {
 	bottom: -403px;
 }
-
+.hp-room-items .hp-room-item .hr-text-2-r {
+	bottom: -318px;
+}
 .hp-room-items .hp-room-item .hr-text h3 {
 	color: #ffffff;
 	z-index: 1;
@@ -911,7 +915,7 @@ ol {
 .hp-room-items .hp-room-item .hr-text h2 {
 	color: #001A6E;
 	font-weight: 800;
-	margin-bottom: 100px;
+	/* margin-bottom: 100px; */
 	-webkit-transition: all 0.2s;
 	-o-transition: all 0.2s;
 	z-index: 1;
@@ -1226,6 +1230,10 @@ ol {
 	font-size: 18px;
 	color: #707079;
 	line-height: 28px;
+}
+.ap-title img{
+	width: 100%;
+	margin-top: 5%;
 }
 
 .about-page-text .ap-services li {
