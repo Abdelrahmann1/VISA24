@@ -446,9 +446,6 @@ for (let index = 1; index <= cityCount; index++) {
   addcity(index);
 }
 
-// alert
-// (visitorCount + " " + Citizenship + " " + Currency + " " + Language + " " + visatype);
-
 function checkVisibility() {
   const amountBox = document.querySelector(".amount-boxs");
   const normalPosition = document.querySelector(".amount-boxabs");
@@ -462,9 +459,7 @@ function checkVisibility() {
     amountBox.classList.remove("hidden");
   }
 }
-document.getElementById("agreeTerms").addEventListener("change", function () {
-  console.log("Checkbox changed:", this.checked);
-});
+
 
 window.addEventListener("scroll", checkVisibility);
 window.addEventListener("resize", checkVisibility);
@@ -535,6 +530,22 @@ document
       senddata();
     }
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  function senddata() {
    let formData = new FormData();
    
@@ -643,15 +654,57 @@ document.addEventListener("DOMContentLoaded", function () {
   
   calcprice()
 })
-
+function getPrice(citizenship, stayDuration) {
+  const tier1 = [  "European Union", 
+    "United States", "United Kingdom" ,  "Canada", "Australia", "Japan"];
+  const tier2 = ["Iran", "Egypt", "Malaysia", "Tunisia", "Saudi Arabia", "Morocco", "India", "China", "Turkey", "Sri Lanka"];
+  const tier3 = ["Afghanistan", "Bangladesh", "Philippines", "Syria", "Vietnam", "Iraq", "Yemen", "Lebanon", "Pakistan", "Palestine"];
+  alert('in calc')
+  if (tier1.includes(citizenship)) {
+    if (stayDuration <= 30) return 2000;
+    if (stayDuration <= 90) return 3000;
+    if (stayDuration <= 180) return 7000;
+  } else if (tier2.includes(citizenship)) {
+    if (stayDuration <= 30) return 5000;
+  } else if (tier3.includes(citizenship)) {
+    return "On request";
+  }
+  return "Not available";
+}
 async function calcprice() {
   let currencySelect = document.getElementById("currency")
   let currentSelectedValue = Currency
 
   let amountElements = document.querySelectorAll(".totalAmount")
+  let totalAmount = 0 ;
+  document.querySelectorAll(".visitor-section").forEach((visitor) => {
+    let citizenship = visitor.querySelector(".count").value.trim();
+    let fromDateInput = visitor.querySelector(".date-placeholder");
+    let toDateInput = visitor.querySelector(".date-placeholder:last-of-type");
+    alert("citizenship");
+    if (!fromDateInput || !toDateInput || !fromDateInput.value || !toDateInput.value) {
+      return;
+    }
+    let fromDate = new Date (fromDateInput.value);
+    let toDate =new Date (toDateInput.value);
+    let stayDuration = (toDate - fromDate) / (1000 * 60 * 60 * 24); // Convert milliseconds to days
+   
+    let price = getPrice(citizenship, stayDuration);
+    alert(price);
+    if (typeof price === "number") {
+      totalAmount += price;
+    }
+  });
+
+
   amountElements.forEach(element => {
-    let amount = visitorCount * 11
-    element.textContent = "Total Amount: " + amount + " " + currentSelectedValue
+    // let amount = visitorCount 
+    if (typeof totalAmount === "number") {
+      element.textContent = "Total Amount: " + totalAmount + " " + currentSelectedValue
+    }else{
+      element.textContent = "Total Amount: Not Available"
+
+    }
   })
 
 
@@ -660,6 +713,7 @@ async function calcprice() {
     niceSelect.addEventListener("click", async function (event) {
       let selectedOption = event.target.closest(".option")
       if (selectedOption) {
+        
         let selectedCurrency = selectedOption.getAttribute("data-value")
         currencySelect.value = selectedCurrency
 
@@ -669,10 +723,10 @@ async function calcprice() {
         }
 
         let amountElements = document.querySelectorAll(".totalAmount")
-        // amountElements.forEach(element => {
-        //   let amount = visitorCount * 11
-        //   element.textContent = "Total Amount: " + amount + " " + selectedCurrency
-        // })
+        amountElements.forEach(element => {
+          let amount = visitorCount * 11
+          element.textContent = "Total Amount: " + amount + " " + selectedCurrency
+        })
 
 
         let allOptions = niceSelect.querySelectorAll(".option")
@@ -687,7 +741,13 @@ async function calcprice() {
     })
   }
 }
+document.querySelectorAll(".count").forEach((input) => {
+  input.addEventListener("change", calcprice); // Recalculate when citizenship changes
+});
 
+document.querySelectorAll(".date-placeholder").forEach((input) => {
+  input.addEventListener("change", calcprice); // Recalculate when stay duration changes
+});
 // async function updatePrice() {
 //   let currencySelect = document.getElementById("currency")
 //   let selectedCurrency = currencySelect.value
