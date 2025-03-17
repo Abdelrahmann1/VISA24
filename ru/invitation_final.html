@@ -11,7 +11,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&dis   play=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
@@ -24,9 +24,9 @@
     <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <link rel="stylesheet" href="../css/next.css" type="text/css">
     <link rel="stylesheet" href="../js/country-select-js-master/build/css/countrySelect.min.css">
 
-    <link rel="stylesheet" href="../css/next.css" type="text/css">
 </head>
 
 <body>
@@ -63,10 +63,10 @@
         <nav class="mainmenu mobile-menu">
             <ul>
                 <li><a href="./index.html">Главная</a></li>
-                <li class="active"><a href="./apply.html">Оформить приглашение</a></li>
+                <li class="active"><a href="./apply.html">Подать заявку на приглашение</a></li>
                 <li><a href="./about-us.html">О нас</a></li>
                 <li><a href="./contact.html">Контакты</a></li>
-                
+
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -111,7 +111,7 @@
                                 <span>RUS <i class="fa fa-angle-down"></i></span>
                                 <div class="flag-dropdown">
                                     <ul>
-                                        <a href="../en/index.html"><img src="../img/flag.jpg" alt=""> EN</a>
+                                        <a href="../en/invitation.html"><img src="../img/flag.jpg" alt=""> EN</a>
 
                                     </ul>
                                 </div>
@@ -136,9 +136,10 @@
                             <nav class="mainmenu">
                                 <ul>
                                     <li><a href="./index.html">Главная</a></li>
-                                    <li class="active"><a href="./apply.html">Оформить приглашение</a></li>
+                                    <li class="active"><a href="./apply.html">Подать заявку на приглашение</a></li>
                                     <li><a href="./about-us.html">О нас</a></li>
                                     <li><a href="./contact.html">Контакты</a></li>
+
                                 </ul>
                             </nav>
                             <div class="nav-right search-switch">
@@ -155,101 +156,138 @@
     <!-- Contact Section Begin -->
     <section class="contact-section spad" id="content">
         <div class="container">
-            <div class="title-invite ">
-                <h3 class="start-app-text text-white bg-primary py-3 px-4 d-inline-block rounded shadow">
-                    Получите приглашение в Россию
-                </h3>
-            </div>
+            <h1>Получите приглашение в Россию</h1>
     
-            <div class="row">
-                <div class="col-lg-5 mt-4">
-                    <div class="contact-text apply-invite p-4 shadow-lg rounded bg-light">
-                        <h4 class="text-primary fw-bold mb-3">Как получить визу в Россию</h4>
-                        <ol class="list-group list-group-numbered mb-3">
-                            <li class="list-group-item border-0 bg-light">
-                                - Заполните нашу <a href="#" class="text-decoration-none text-primary fw-bold">
-                                    онлайн-форму</a> для получения приглашения на визу в Россию.
-                            </li>
-                            <li class="list-group-item border-0 bg-light">
-                                - Заполните <a href="https://visa.kdmid.ru/" target="_blank"
-                                    class="text-decoration-none text-primary fw-bold">
-                                    онлайн-заявку на визу</a> на официальном сайте Министерства иностранных дел России и
-                                предоставьте свое приглашение и личные данные.
-                            </li>
-                        </ol>
-                        <div class="alert alert-info" role="alert">
-                            <strong>Нужна дополнительная информация?</strong> Посетите
-                            <a href="https://goingrus.com/info/en/get-russian-visa/russian-consulates" target="_blank"
-                                class="text-decoration-none text-primary fw-bold">
-                                официальный сайт посольства России</a>, чтобы ознакомиться со всеми требованиями к визе.
+            <p>Сначала выберите язык и валюту, с которыми хотите работать</p>
+            <div class="section">
+                <div class="section-header">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="..." fill="white" />
+                        </svg> Язык и валюта
+                    </span>
+                </div>
+                <div class="section-body hs">
+                    <div class="hs-1">
+                        <label>Язык</label>
+                        <div class="dropdown">
+                            <button class="btn drop-btn dropdown-toggle lan-input" name="language" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Язык
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" data-img="../img/flag.jpg">
+                                        <p><img src="../img/flag.jpg" alt=""> Английский</p>
+                                    </a></li>
+                            </ul>
                         </div>
-                        <img src="../img/apply/7.png" alt="Процесс получения визы" class="img-fluid rounded mt-3 shadow-sm">
+                    </div>
+                    <div class="hs-1" id="currency-div">
+                        <label>Валюта</label>
+                        <select id="currency">
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="RUB">RUB</option>
+                        </select>
                     </div>
                 </div>
+            </div>
     
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="div-start-a-t text-center my-4">
-                        <h2>Начните оформление</h2>
-                    </div>
+            <p>Далее заполните форму</p>
     
-                    <form action="#" class="contact-form">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <label for="name">Язык</label>
-                                <div class="dropdown">
-                                    <button class="btn drop-btn lan-input dropdown-toggle" type="button" id="Language"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Язык
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" data-img="../img/flag.jpg"><img
-                                                    src="../img/flag.jpg" alt=""> Английский</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <label for="name">Валюта</label>
-                                <select id="currency" placeholder="Валюта">
-                                    <option value="USD">USD</option>
-                                    <option value="Euro">Euro</option>
-                                    <option value="RUB">RUB</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-12 inside-cit">
-                                <label for="name">Гражданство</label>
-                                <input type="text" placeholder="Гражданство" id="Citizenship" class="invitecount count">
-                            </div>
-                            <div class="col-lg-12">
-                                <label for="name">Тип визы</label>
-                                <select id="visatype">
-                                    <option value="0">Выберите тип визы</option>
-                                    <option value="2">Однократная туристическая виза</option>
-                                    <option value="3">Двукратная туристическая виза</option>
-                                    <option value="4">Бизнес-виза</option>
-                                    <option value="5">Многократная туристическая виза</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-12 mb-4">
-                                <label>Количество посетителей</label>
-                                <select id="numOfVisitors">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6+</option>
-                                </select>
-                            </div>
-                            <div class="col-lg-12">
-                                <button type="submit" class="appy-invite-btn" id="nextStsepBtn"> > Следующий шаг</button>
-                            </div>
+            <div id="visitor-container"></div>
+            <div class="section">
+                <div class="section-header head">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                            <path d="..." />
+                        </svg> Города пребывания
+                    </span>
+                    <button class="add-btn" id="city-containerbtn" onclick="addcity()">+ Добавить город</button>
+                </div>
+                <div class="section-body">
+                    <div id="city-container"></div>
+                </div>
+            </div>
+    
+            <div class="section">
+                <div class="section-header">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="..." />
+                        </svg> Медицинская страховка для визы в Россию (необязательно)
+                    </span>
+                </div>
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label>Для получения российской визы иностранным гражданам также требуется медицинская страховка. Узнать больше</label>
+                            <label class="terms">
+                                <input type="checkbox" id="Medical" required>
+                                Мне нужна медицинская страховка для визы в Россию
+                            </label>
                         </div>
-                    </form>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="section">
+                <div class="section-header">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="..." />
+                        </svg> Как с вами связаться
+                    </span>
+                </div>
+                <div class="section-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Email</label>
+                            <input type="email" id="email" name="Email" required>
+                        </div>
+    
+                        <div class="col-lg-6">
+                            <label>Телефон</label>
+                            <input type="Phone" id="phone" name="Phone" required>
+                        </div>
+    
+                        <div class="col-lg-12">
+                            <label>Особые пожелания</label>
+                            <textarea name="Special instructions" cols="60" rows="6" id=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="payment-section">
+                <label class="terms">
+                    <input type="checkbox" id="agreeTerms" name="terms" required>
+                    Я согласен с <a href="#">Условиями обслуживания</a> и <a href="#">Политикой конфиденциальности</a>
+                </label>
+    
+                <hr class="divider">
+    
+                <div class="total-amount">
+                    <div class="t-fee">
+                        <div class="amount-box amount-boxs">
+                            <span id="totalAmount1" class="totalAmount">Общая сумма: 150 USD</span>
+                        </div>
+                        <div class=" amount-box amount-boxabs">
+                            <span id="totalAmount2" class="totalAmount">Общая сумма: 150 USD</span>
+                        </div>
+                    </div>
+                    <button class="payment-btn" type="submit" id="submitButton">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="..." fill="white" />
+                        </svg> Перейти к оплате
+                    </button>
                 </div>
             </div>
         </div>
     </section>
-    
     <!-- Contact Section End -->
 
     <!-- Footer Section Begin -->
@@ -266,8 +304,7 @@
                                 </a>
                             </div>
                             <p>Visa24.com — надежный ресурс для путешественников, желающих посетить Россию.<br />
-                                Мы обеспечиваем удобный и беспрепятственный процесс получения визы в различных регионах и на
-                                разных языках.</p>
+                                Мы обеспечиваем удобный и беспроблемный процесс оформления документов в различных регионах и на разных языках.</p>
                             <div class="fa-social"></div>
                         </div>
                     </div>
@@ -291,7 +328,7 @@
                             <p>Мы работаем с клиентами по всему миру.</p>
                             <p>Получайте последние новости и специальные предложения.</p>
                             <form action="#" class="fn-form">
-                                <input type="text" placeholder="Email">
+                                <input type="text" placeholder="Email" required>
                                 <button type="submit"><i class="fa fa-send"></i></button>
                             </form>
                         </div>
@@ -305,10 +342,10 @@
                     <div class="col-lg-7">
                         <ul>
                             <li><a href="contact.html">Контакты</a></li>
-                            <li><a href="contract-offer.html">Договор оферты</a></li>
+                            <li><a href="contract-offer.html">Договор-оферта</a></li>
                             <li><a href="refund-conditions.html">Условия возврата</a></li>
                             <li><a href="Privacy_Policy.html">Политика конфиденциальности</a></li>
-                            <li><a href="Refusal of_service.html">Отказ от обслуживания</a></li>
+                            <li><a href="Refusal_of_service.html">Отказ от обслуживания</a></li>
                             <li><a href="how_to_pay.html">Способы оплаты</a></li>
                         </ul>
                     </div>
@@ -326,20 +363,6 @@
     
     <!-- Footer Section End -->
 
-    <script>
-        document.getElementById("nextStsepBtn").addEventListener("click", function () {
-            event.preventDefault();
-            // window.location.href = `invitation_final.html`;
-            let visitorCount = document.getElementById("numOfVisitors").value;
-            let Citizenship = document.getElementById("Citizenship").value;
-            let Currency = document.getElementById("currency").value;
-            let Language = document.getElementById("Language").value;
-            let visatype = document.getElementById("visatype").value;
-
-            window.location.href = `invitation_final.html?numofvisitors=${encodeURIComponent(visitorCount)}&Citizenship=${encodeURIComponent(Citizenship)}&Currency=${encodeURIComponent(Currency)}&Language=${encodeURIComponent(Language)}&visatype=${encodeURIComponent(visatype)}`;
-
-        })
-    </script>
     <!-- Search model Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -349,9 +372,6 @@
             </form>
         </div>
     </div>
-    <!-- Search model end -->
-
-    <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery.magnific-popup.min.js"></script>
@@ -360,7 +380,7 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-    <!-- <script src="../js/next.js"></script> -->
+    <script src="../js/nextf.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
         crossorigin="anonymous"></script>
@@ -372,10 +392,11 @@
     <script>
         $(document).ready(function () {
             $(".count").countrySelect();
-
-
         });
+
     </script>
+
+
 </body>
 
 </html>
