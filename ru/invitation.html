@@ -211,10 +211,7 @@
                                     <option value="RUB">RUB</option>
                                 </select>
                             </div>
-                            <div class="col-lg-12 inside-cit">
-                                <label for="name">Гражданство</label>
-                                <input type="text" placeholder="Гражданство" id="Citizenship" class="invitecount count">
-                            </div>
+                         
                             <div class="col-lg-12">
                                 <label for="name">Тип визы</label>
                                 <select id="visatype">
@@ -327,12 +324,11 @@
             event.preventDefault();
             // window.location.href = `invitation_final.html`;
             let visitorCount = document.getElementById("numOfVisitors").value;
-            let Citizenship = document.getElementById("Citizenship").value;
             let Currency = document.getElementById("currency").value;
             let Language = document.getElementById("Language").value;
             let visatype = document.getElementById("visatype").value;
 
-            window.location.href = `invitation_final.html?numofvisitors=${encodeURIComponent(visitorCount)}&Citizenship=${encodeURIComponent(Citizenship)}&Currency=${encodeURIComponent(Currency)}&Language=${encodeURIComponent(Language)}&visatype=${encodeURIComponent(visatype)}`;
+            window.location.href = `invitation_final.html?numofvisitors=${encodeURIComponent(visitorCount)}&Currency=${encodeURIComponent(Currency)}&Language=${encodeURIComponent(Language)}&visatype=${encodeURIComponent(visatype)}`;
 
         })
     </script>
